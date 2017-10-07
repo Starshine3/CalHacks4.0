@@ -43,3 +43,59 @@
     app.listen('3000', function(){
         console.log('running on 3000...');
     });
+
+    var cloud = require('../cloud/cloud.js');
+
+    // Imports the Google Cloud client library
+    var gcloud = require('gcloud')({
+      keyFilename: 'key.json',
+      projectId: 'avian-cogency-182220'
+    });
+    // Instantiates a client
+    var vision = gcloud.vision();
+
+    // var image = 'image.jpg';
+
+    // vision.detectText('image.jpg', function(err, text, apiResponse) {
+    //   // text = ['This was text found in the image']
+    // });
+
+    // // Imports the Google Cloud client library
+    // const Vision = require('@google-cloud/vision');
+
+    // // Instantiates a client
+    // const vision = Vision();
+
+    // The name of the image file to annotate
+    const fileName = '../server/uploads/file-1507389742407.jpg';
+
+    // Prepare the request object
+    const request = {
+      source: {
+        filename: fileName
+      }
+    };
+
+    // Performs label detection on the image file
+    vision.labelDetection(request)
+      .then((results) => {
+        const labels = results[0].labelAnnotations;
+
+        console.log('Labels:');
+        labels.forEach((label) => console.log(label.description));
+      })
+      .catch((err) => {
+        console.error('ERROR:', err);
+      });
+
+
+    // Performs landmark detection on the local file
+    vision.landmarkDetection({ source: {filename: fileName} })
+      .then((results) => {
+        const landmarks = results[0].landmarkAnnotations;
+        console.log('Landmarks:');
+        landmarks.forEach((landmark) => console.log(landmark));
+      })
+      .catch((err) => {
+        console.error('ERROR:', err);
+      });
