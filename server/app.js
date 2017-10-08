@@ -1,5 +1,5 @@
-    var express = require('express'); 
-    var app = express(); 
+    var express = require('express');
+    var app = express();
     var bodyParser = require('body-parser');
     var multer = require('multer');
 
@@ -13,7 +13,7 @@
     /** Serving from the same express Server
     No cors required */
     app.use(express.static('../client'));
-    app.use(bodyParser.json());  
+    app.use(bodyParser.json());
 
     var storage = multer.diskStorage({ //multers disk storage settings
         destination: function (req, file, cb) {
@@ -43,3 +43,23 @@
     app.listen('3000', function(){
         console.log('running on 3000...');
     });
+
+    function detectLandmarks (fileName) {
+      const Vision = require('@google-cloud/vision');
+      const vision = Vision();
+
+      // The path to the local image file, e.g. "/path/to/image.png"
+      // const fileName = '/path/to/image.png';
+
+      // Performs landmark detection on the local file
+      vision.landmarkDetection({ source: {filename: fileName} })
+        .then((results) => {
+          const landmarks = results[0].landmarkAnnotations;
+          console.log('Landmarks:');
+          landmarks.forEach((landmark) => console.log(landmark));
+        })
+        .catch((err) => {
+          console.error('ERROR:', err);
+        });
+      // [END vision_landmark_detection]
+    }
