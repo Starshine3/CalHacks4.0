@@ -44,22 +44,139 @@
         console.log('running on 3000...');
     });
 
-    function detectLandmarks (fileName) {
+    app.get('/test', function(req, res){
+      console.log('fifdhifdhif');
+      res.send('user ');
+    });
+
+    app.get('/detectLandmarks/:filename', function (req, res) {
+      console.log('hellow world');
       const Vision = require('@google-cloud/vision');
       const vision = Vision();
 
-      // The path to the local image file, e.g. "/path/to/image.png"
-      // const fileName = '/path/to/image.png';
+              // The name of the image file to annotate
+    const fileName = './uploads/sphix.jpg';
+
+        // Prepare the request object
+        const request = {
+          source: {
+            filename: fileName
+          }
+        };
+vision.webDetection(request)
+  .then((results) => {
+    const webDetection = results[0].webDetection;
+    if (webDetection.fullMatchingImages.length) {
+      console.log(`Full matches found: ${webDetection.fullMatchingImages.length}`);
+      webDetection.fullMatchingImages.forEach((image) => {
+        console.log(`  URL: ${image.url}`);
+        console.log(`  Score: ${image.score}`);
+            console.log(fullMatchingImages);
+                res.send(fullMatchingImages);
+      });
+    }
+
+    if (webDetection.partialMatchingImages.length) {
+      console.log(`Partial matches found: ${webDetection.partialMatchingImages.length}`);
+      webDetection.partialMatchingImages.forEach((image) => {
+        console.log(`  URL: ${image.url}`);
+        console.log(`  Score: ${image.score}`);
+                    console.log(partialMatchingImages);
+                res.send(partialMatchingImages);
+      });
+    }
+
+    if (webDetection.webEntities.length) {
+      console.log(`Web entities found: ${webDetection.webEntities.length}`);
+      webDetection.webEntities.forEach((webEntity) => {
+        console.log(`  Description: ${webEntity.description}`);
+        console.log(`  Score: ${webEntity.score}`);
+                res.send('dsdsd');
+      });
+    }
+  })
+  .catch((err) => {
+    console.error('ERROR:', err);
+  });
+// vision.labelDetection(request)
+//   .then((results) => {
+//     const labels = results[0].labelAnnotations;
+//     console.log('Labels:');
+//     console.log(labels);
+//     labels.forEach((label) => console.log(label));
+//     res.send(labels);
+//   })
+//   .catch((err) => {
+//     console.error('ERROR:', err);
+//     res.send('failed');
+//   });
 
       // Performs landmark detection on the local file
-      vision.landmarkDetection({ source: {filename: fileName} })
+      vision.landmarkDetection(request)
         .then((results) => {
           const landmarks = results[0].landmarkAnnotations;
           console.log('Landmarks:');
+          console.log(landmarks);
           landmarks.forEach((landmark) => console.log(landmark));
+          res.send(landmarks);
         })
         .catch((err) => {
           console.error('ERROR:', err);
+          res.send('failed');
         });
       // [END vision_landmark_detection]
-    }
+    });
+
+    // // Imports the Google Cloud client library
+    // var gcloud = require('gcloud')({
+    //   keyFilename: 'key.json',
+    //   projectId: 'avian-cogency-182220'
+    // });
+    // // Instantiates a client
+    // var vision = gcloud.vision();
+
+    // // var image = 'image.jpg';
+
+    // // vision.detectText('image.jpg', function(err, text, apiResponse) {
+    // //   // text = ['This was text found in the image']
+    // // });
+
+    // // // Imports the Google Cloud client library
+    // // const Vision = require('@google-cloud/vision');
+
+    // // // Instantiates a client
+    // // const vision = Vision();
+
+    // // The name of the image file to annotate
+    // const fileName = '../server/uploads/file-1507389742407.jpg';
+
+    // // Prepare the request object
+    // const request = {
+    //   source: {
+    //     filename: fileName
+    //   }
+    // };
+
+    // // Performs label detection on the image file
+    // vision.labelDetection(request)
+    //   .then((results) => {
+    //     const labels = results[0].labelAnnotations;
+
+    //     console.log('Labels:');
+    //     labels.forEach((label) => console.log(label.description));
+    //   })
+    //   .catch((err) => {
+    //     console.error('ERROR:', err);
+    //   });
+
+
+    // // Performs landmark detection on the local file
+    // vision.landmarkDetection({ source: {filename: fileName} })
+    //   .then((results) => {
+    //     const landmarks = results[0].landmarkAnnotations;
+    //     console.log('Landmarks:');
+    //     landmarks.forEach((landmark) => console.log(landmark));
+    //   })
+    //   .catch((err) => {
+    //     console.error('ERROR:', err);
+    //   });

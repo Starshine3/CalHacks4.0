@@ -1,5 +1,5 @@
 angular.module('fileUpload', ['ngFileUpload'])
-.controller('MyCtrl',['Upload','$window',function(Upload,$window){
+.controller('MyCtrl',['Upload','$window', '$http',function(Upload, $window, $http){
     var vm = this;
     vm.submit = function(){ //function to call on form submit
         if (vm.upload_form.file.$valid && vm.file) { //check if from is valid
@@ -27,4 +27,13 @@ angular.module('fileUpload', ['ngFileUpload'])
             vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
         });
     };
+    var filename = './uploads/file-1507421695801.jpg';
+
+    vm.test = function(filename) {
+        $http.get('/detectLandmarks/' + filename)
+            .then(function(data){
+            console.log(data);
+        });
+    };
+
 }]);

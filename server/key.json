@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "avian-cogency-182220",
+  "private_key_id": "193a53ce83c2e10baa35e153ebe19053bbf86de9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC1bAelqSOo8JN1\nJbQ215aOmtcCu5wwT+uijUZs5G2BTR0J/nUploWoY724aOQ3CMlpvFfeHCySlU3l\nr4/Yt8IF/TzWVgByYW0cHj24AROA7S9l/DqUBmlrzZRbIaP1hy6SPRzrHj4cUhfE\niS80HJxTzYFwURNav6eTyAKl3WvaywK/vhNSV4Pf80CRhLV8o2rM639AuaajFWqn\n39H0eu+Mgc7KSU4sCd7plcP6jT50Ry7A8eNLQ6oIG+h67q4ongZv7WNCvpVyT3Vc\nhy6voIU9OZ3dd6En+pyEYcY3iscPyROzF2CdOWZgb0pPHN+6QNeEp4VBELshNxmB\nW66mR63pAgMBAAECggEAAitQGn6S1JRIm9/4vA2Iphyn1+Dr+/ZL3pFKqq0LuiR0\nsm5LP4hzNKsGO7KiKx5JxwZF4eJh9HOG9bYYEpx8qQGsI1i7GW/P+pDjmaDTRBL4\nVbaivkTAjrw4h+M3e9oP7n1LxgWCJjVWrDaC5mA1/+W3JH0NR2QY2gvlxc66v86K\nzSU4QlxMHM+OmlZ+Wka3xx63J++dAAdvU9m72YwiV5lLkQQpYoy1wpKC7d4DH5qc\nW1+vHdbgfyl3lzZoTX3wBplqtm70I1xFjL0kaer0WzDJ2zT04fX24ykSkUofhxjP\nCF7jd24RNmMwBcOysymvq+B+hFidvHiZymKrMUErWQKBgQD0oIX09YSb/Lc1dlUX\nlOL26p6PH6GQ0NJbu0oEY8LRnq29NEozq/JP7F9M1tjS9SmbhhIhZ33TEnfZh3uP\nofS/Ax0jCtnzXdYndjUtQY5N6Muc5KXCA6LIGyqzYdHePXeuVcdYo6wdBrYyZ/1Z\nYR5aWej4/QuENEFvay5t1STDEwKBgQC920JgGbwDXDhx/B5FtPXAg8oJynbIchIi\nGyb0WbVookilSDNf63qkhjTMetJIeCVMRsCgVI0D5n5wNyRY+O1CSKq1ne6COO4Y\nYhvKEV1lzdk15f9zCDtTdJjpB61ncV/9Wc9dmJwaz5hrnkusWxl1/d4LJEmIYBu8\ntoAcYfDukwKBgQDWaURAWlmq5ywlvdwDWUo9pZLoW48fAQj/wf60LkR5up0JcyV+\neL1f9Avrq3xMGvonCLIneTA9qrhFf4x7bja4nSASsNYrixnDaMZfLlBuVRbyIy5u\nCQXKYpVguOJb6oBV23VoabzXjCRxtdfHWWpjQt8CLbjEXZDk+YquVd1s5QKBgGuW\nHmz66FI3Jj1hk34I5+JqTEl0FA/OpHvzSwXY+DYNEIGpAoPumxc0fiMJzrQGcYxh\n47J3d1moein49X39weV37FTy5D+jJzlmDz1YzcZs+hPS/Akhtwy53BThpuAhnTWi\neSIe4wdGcKc7ksJe9XSpofRKYekIHW+5M6vhzHhFAoGBAKa4CNMfa9sCcxws4ob0\ncijnvzujasWI7XrFWEN1CsWGGHt/mbz6NFIGXZVHGvw5IQLwpYD+o5j8TeJUb9e9\n8LLu7Ys43ULgATXwj5TkBDwLjkRwfUTwEjklxTJtGuCQb5y4qD6aRgMge24Cf8do\n/D9LcnM2ytWnz0n5DQ9tsQT0\n-----END PRIVATE KEY-----\n",
+  "client_email": "calhacks4@avian-cogency-182220.iam.gserviceaccount.com",
+  "client_id": "113224161878135145485",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/calhacks4%40avian-cogency-182220.iam.gserviceaccount.com"
+}
