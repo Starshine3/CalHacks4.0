@@ -49,38 +49,50 @@
       res.send('user ');
     });
 
-    app.get('/detectLandmarks/:filename', function (req, res) {
-      console.log('hellow world');
+    app.get('/detectLandmarks2/:filename', function(req, res){
+      var filenames = req.params.filename;
+      fNames = filenames.split(",");
       const Vision = require('@google-cloud/vision');
       const vision = Vision();
 
-              // The name of the image file to annotate
-    const fileName = './uploads/sphix.jpg';
+      for (var i = 0; i < fNames.length; i++) {
+        const fileName = './uploads/' + fNames[i];
+        const request = {source: {filename: fileName}};
+        vision.webDetection(request)
+        .then((results) => {
+        const webDetection = results[0].webDetection;
+        if (webDetection.webEntities.length) {
+            console.log(`Description: ${webDetection.webEntities[0].description}`);
+            res.send(webDetection.webEntities[0].description);
+        }
+        })
+        .catch((err) => {
+            console.error('ERROR:', err);
+        });
+      }
+    });
+
+    app.get('/detectLandmarks/:filename', function (req, res) {
+        console.log('hellow world');
+        const Vision = require('@google-cloud/vision');
+        const vision = Vision();
+
+        // The name of the image file to annotate
+        const fileName = './uploads/sphix.jpg';
 
         // Prepare the request object
-        const request = {
-          source: {
-            filename: fileName
-          }
-        };
-vision.webDetection(request)
-  .then((results) => {
-    const webDetection = results[0].webDetection;
-    if (webDetection.webEntities.length) {
-        console.log(`Description: ${webDetection.webEntities[0].description}`);
-        res.send(webDetection.webEntities[0].description);
-      // console.log(`Web entities found: ${webDetection.webEntities.length}`);
-
-      // webDetection.webEntities.forEach((webEntity) => {
-      //   console.log(`  Description: ${webEntity.description}`);
-      //   console.log(`  Score: ${webEntity.score}`);
-      //           console.log(webDetection.webEntities);
-      // });
-    }
-  })
-  .catch((err) => {
-    console.error('ERROR:', err);
-  });
+        const request = {source: {filename: fileName}};
+        vision.webDetection(request)
+            .then((results) => {
+            const webDetection = results[0].webDetection;
+            if (webDetection.webEntities.length) {
+                console.log(`Description: ${webDetection.webEntities[0].description}`);
+                res.send(webDetection.webEntities[0].description);
+            }
+          })
+            .catch((err) => {
+                console.error('ERROR:', err);
+            });
 // vision.labelDetection(request)
 //   .then((results) => {
 //     const labels = results[0].labelAnnotations;
