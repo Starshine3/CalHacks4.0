@@ -71,8 +71,8 @@ vision.webDetection(request)
       webDetection.fullMatchingImages.forEach((image) => {
         console.log(`  URL: ${image.url}`);
         console.log(`  Score: ${image.score}`);
-            console.log(fullMatchingImages);
-                res.send(fullMatchingImages);
+            console.log(webDetection.fullMatchingImages);
+                res.send(webDetection.fullMatchingImages);
       });
     }
 
@@ -81,8 +81,8 @@ vision.webDetection(request)
       webDetection.partialMatchingImages.forEach((image) => {
         console.log(`  URL: ${image.url}`);
         console.log(`  Score: ${image.score}`);
-                    console.log(partialMatchingImages);
-                res.send(partialMatchingImages);
+                    console.log(webDetection.partialMatchingImages);
+                res.send(webDetection.partialMatchingImages);
       });
     }
 
