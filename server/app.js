@@ -63,41 +63,41 @@
             filename: fileName
           }
         };
-vision.webDetection(request)
-  .then((results) => {
-    const webDetection = results[0].webDetection;
-    if (webDetection.fullMatchingImages.length) {
-      console.log(`Full matches found: ${webDetection.fullMatchingImages.length}`);
-      webDetection.fullMatchingImages.forEach((image) => {
-        console.log(`  URL: ${image.url}`);
-        console.log(`  Score: ${image.score}`);
-            console.log(webDetection.fullMatchingImages);
-                res.send(webDetection.fullMatchingImages);
-      });
-    }
+// vision.webDetection(request)
+//   .then((results) => {
+//     const webDetection = results[0].webDetection;
+//     if (webDetection.fullMatchingImages.length) {
+//       console.log(`Full matches found: ${webDetection.fullMatchingImages.length}`);
+//       webDetection.fullMatchingImages.forEach((image) => {
+//         console.log(`  URL: ${image.url}`);
+//         console.log(`  Score: ${image.score}`);
+//             console.log(webDetection.fullMatchingImages);
+//                 res.send(webDetection.fullMatchingImages);
+//       });
+//     }
 
-    if (webDetection.partialMatchingImages.length) {
-      console.log(`Partial matches found: ${webDetection.partialMatchingImages.length}`);
-      webDetection.partialMatchingImages.forEach((image) => {
-        console.log(`  URL: ${image.url}`);
-        console.log(`  Score: ${image.score}`);
-                    console.log(webDetection.partialMatchingImages);
-                res.send(webDetection.partialMatchingImages);
-      });
-    }
+//     if (webDetection.partialMatchingImages.length) {
+//       console.log(`Partial matches found: ${webDetection.partialMatchingImages.length}`);
+//       webDetection.partialMatchingImages.forEach((image) => {
+//         console.log(`  URL: ${image.url}`);
+//         console.log(`  Score: ${image.score}`);
+//                     console.log(webDetection.partialMatchingImages);
+//                 res.send(webDetection.partialMatchingImages);
+//       });
+//     }
 
-    if (webDetection.webEntities.length) {
-      console.log(`Web entities found: ${webDetection.webEntities.length}`);
-      webDetection.webEntities.forEach((webEntity) => {
-        console.log(`  Description: ${webEntity.description}`);
-        console.log(`  Score: ${webEntity.score}`);
-                res.send('dsdsd');
-      });
-    }
-  })
-  .catch((err) => {
-    console.error('ERROR:', err);
-  });
+//     if (webDetection.webEntities.length) {
+//       console.log(`Web entities found: ${webDetection.webEntities.length}`);
+//       webDetection.webEntities.forEach((webEntity) => {
+//         console.log(`  Description: ${webEntity.description}`);
+//         console.log(`  Score: ${webEntity.score}`);
+//                 res.send('dsdsd');
+//       });
+//     }
+//   })
+//   .catch((err) => {
+//     console.error('ERROR:', err);
+//   });
 // vision.labelDetection(request)
 //   .then((results) => {
 //     const labels = results[0].labelAnnotations;
@@ -114,7 +114,7 @@ vision.webDetection(request)
       // Performs landmark detection on the local file
       vision.landmarkDetection(request)
         .then((results) => {
-          const landmarks = results[0].landmarkAnnotations;
+          const landmarks = results.landmarkAnnotations;
           console.log('Landmarks:');
           console.log(landmarks);
           landmarks.forEach((landmark) => console.log(landmark));
