@@ -44,10 +44,23 @@
         console.log('running on 3000...');
     });
 
+<<<<<<< HEAD
     app.get('/test', function(req, res){
       console.log('fifdhifdhif');
       res.send('user ');
     });
+=======
+    // Imports the Google Cloud client library
+    var gcloud = require('gcloud')({
+      keyFilename: 'key.json',
+      projectId: 'avian-cogency-182220'
+    });
+    // Instantiates a client
+    var datastore = require('@google-cloud/vision')(config);
+    var vision = gcloud.vision();
+
+    // var image = 'image.jpg';
+>>>>>>> 8657e7a9d46cd4dab664d37ea5ca4b07e1340579
 
     app.get('/detectLandmarks/:filename', function (req, res) {
       console.log('hellow world');
@@ -133,6 +146,7 @@ vision.webDetection(request)
     //   projectId: 'avian-cogency-182220'
     // });
     // // Instantiates a client
+<<<<<<< HEAD
     // var vision = gcloud.vision();
 
     // // var image = 'image.jpg';
@@ -180,3 +194,127 @@ vision.webDetection(request)
     //   .catch((err) => {
     //     console.error('ERROR:', err);
     //   });
+=======
+    // const vision = Vision();
+
+    // The name of the image file to annotate
+    const fileName = '../server/uploads/file-1507389742407.jpg';
+
+    // Prepare the request object
+    const request = {
+      source: {
+        filename: fileName
+      }
+    };
+
+    // Performs label detection on the image file
+    vision.labelDetection(request)
+      .then((results) => {
+        const labels = results[0].labelAnnotations;
+
+        console.log('Labels:');
+        labels.forEach((label) => console.log(label.description));
+      })
+      .catch((err) => {
+        console.error('ERROR:', err);
+      });
+
+
+    // Performs landmark detection on the local file
+    vision.landmarkDetection({ source: {filename: fileName} })
+      .then((results) => {
+        const landmarks = results[0].landmarkAnnotations;
+        console.log('Landmarks:');
+        landmarks.forEach((landmark) => console.log(landmark));
+      })
+      .catch((err) => {
+        console.error('ERROR:', err);
+      });
+
+
+
+
+
+
+
+
+/*
+    Code from https://github.com/thesandlord/samples/blob/master/cloud-vision-nodejs/index.js
+    https://medium.com/google-cloud/using-the-google-cloud-vision-api-with-node-js-194e507afbd8
+*/
+
+// 'use strict';
+
+// var express = require('express');
+// var fs = require('fs');
+// var util = require('util');
+// var mime = require('mime');
+// var multer = require('multer');
+// var upload = multer({dest: 'uploads/'});
+
+// // Set up auth
+// var gcloud = require('gcloud')({
+//   keyFilename: 'key.json',
+//   projectId: '<YOUR-PROJECT-ID-HERE>'
+// });
+
+// var vision = gcloud.vision();
+
+// var app = express();
+
+// // Simple upload form
+// var form = '<!DOCTYPE HTML><html><body>' +
+//   "<form method='post' action='/upload' enctype='multipart/form-data'>" +
+//   "<input type='file' name='image'/>" +
+//   "<input type='submit' /></form>" +
+//   '</body></html>';
+
+// app.get('/', function(req, res) {
+//   res.writeHead(200, {
+//     'Content-Type': 'text/html'
+//   });
+//   res.end(form);
+// });
+
+// // Get the uploaded image
+// // Image is uploaded to req.file.path
+// app.post('/upload', upload.single('image'), function(req, res, next) {
+
+//   // Choose what the Vision API should detect
+//   // Choices are: faces, landmarks, labels, logos, properties, safeSearch, texts
+//   var types = ['labels'];
+
+//   // Send the image to the Cloud Vision API
+//   vision.detect(req.file.path, types, function(err, detections, apiResponse) {
+//     if (err) {
+//       res.end('Cloud Vision Error');
+//     } else {
+//       res.writeHead(200, {
+//         'Content-Type': 'text/html'
+//       });
+//       res.write('<!DOCTYPE HTML><html><body>');
+
+//       // Base64 the image so we can display it on the page
+//       res.write('<img width=200 src="' + base64Image(req.file.path) + '"><br>');
+
+//       // Write out the JSON output of the Vision API
+//       res.write(JSON.stringify(detections, null, 4));
+
+//       // Delete file (optional)
+//       fs.unlinkSync(req.file.path);
+
+//       res.end('</body></html>');
+//     }
+//   });
+// });
+
+// app.listen(8080);
+// console.log('Server Started');
+
+// // Turn image into Base64 so we can display it easily
+
+// function base64Image(src) {
+//   var data = fs.readFileSync(src).toString('base64');
+//   return util.format('data:%s;base64,%s', mime.lookup(src), data);
+// }
+>>>>>>> 8657e7a9d46cd4dab664d37ea5ca4b07e1340579
